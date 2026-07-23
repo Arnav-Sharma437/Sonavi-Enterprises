@@ -1,0 +1,148 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import { Menu, X } from "lucide-react";
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Products", href: "/#products" },
+    { name: "Contact", href: "/#contact" },
+  ];
+
+  const handleLinkClick = (href: string) => {
+    setIsOpen(false);
+    if (href.startsWith("/#")) {
+      if (pathname !== "/") {
+        router.push(href);
+      } else {
+        const id = href.replace("/#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
+  const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    if (href.startsWith("/#")) {
+      return false;
+    }
+    return pathname.startsWith(href);
+  };
+
+  return (
+    <nav className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.svg"
+                alt="Sonavi Enterprises Logo"
+                width={180}
+                height={45}
+                priority
+                className="h-11 w-auto"
+              />
+            </Link>
+          </div>
+
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex md:items-center md:space-x-8">
+            {navLinks.map((link) => {
+              const active = isLinkActive(link.href);
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => handleLinkClick(link.href)}
+                  className={`text-sm font-semibold transition-colors duration-200 hover:text-brand-teal ${
+                    active ? "text-brand-teal font-bold" : "text-gray-600"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+            
+            {/* CTA Button */}
+            <Link
+              href="/#contact"
+              onClick={() => handleLinkClick("/#contact")}
+              className="inline-flex items-center justify-center rounded-full bg-brand-orange px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-brand-orange/95 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange"
+            >
+              Get a Quote
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="flex md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-800 focus:outline-none"
+              aria-controls="mobile-menu"
+              aria-expanded={isOpen}
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <X className="block h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="block h-6 w-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-screen opacity-100 border-b border-gray-200 bg-white" : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+        id="mobile-menu"
+      >
+        <div className="space-y-1 px-4 py-4 pb-6 sm:px-6">
+          {navLinks.map((link) => {
+            const active = isLinkActive(link.href);
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => handleLinkClick(link.href)}
+                className={`block rounded-md px-3 py-2.5 text-base font-medium transition-colors hover:bg-gray-50 hover:text-brand-teal ${
+                  active ? "text-brand-teal bg-gray-50/50" : "text-gray-600"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+          <div className="mt-6 px-3">
+            <Link
+              href="/#contact"
+              onClick={() => handleLinkClick("/#contact")}
+              className="flex w-full items-center justify-center rounded-full bg-brand-orange py-3 text-base font-semibold text-white shadow-sm hover:bg-brand-orange/95"
+            >
+              Get a Quote
+            </Link>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}

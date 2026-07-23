@@ -1,65 +1,285 @@
-import Image from "next/image";
+import Link from "next/link";
+import { 
+  GlassWater, 
+  Coffee, 
+  Utensils, 
+  UtensilsCrossed, 
+  Gift, 
+  Building2, 
+  Factory, 
+  GraduationCap, 
+  HeartPulse, 
+  Hotel, 
+  Landmark, 
+  Coins, 
+  Home, 
+  Cpu, 
+  ShoppingBag, 
+  ArrowRight, 
+  Mail, 
+  Phone, 
+  MapPin 
+} from "lucide-react";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import EnquiryForm from "@/components/EnquiryForm";
 
-export default function Home() {
+// 5 Products
+const products = [
+  {
+    title: "Copper Bottles",
+    description: "Premium leak-proof bottles crafted from pure copper. Combining classic elegance with modern wellness, perfect for executive desks.",
+    icon: GlassWater,
+  },
+  {
+    title: "Copper Mugs",
+    description: "Artisanal hammered and smooth finished copper mugs. Adds a touch of luxury to hot and cold corporate beverages.",
+    icon: Coffee,
+  },
+  {
+    title: "Copper Dinner Sets",
+    description: "Exquisite multi-piece dining sets made of heavy-gauge pure copper. Designed for royal presentations and premium gifting.",
+    icon: Utensils,
+  },
+  {
+    title: "Copper Cutlery Sets",
+    description: "Mirror-finished and textured copper cutlery. A sophisticated table addition that speaks volumes of fine craftsmanship.",
+    icon: UtensilsCrossed,
+  },
+  {
+    title: "Customized Corporate Gift Sets",
+    description: "Tailor-made copper hampers combining bottles, mugs, and customized accessories, beautifully packaged for executives.",
+    icon: Gift,
+  },
+];
+
+// 10 Industries
+const industries = [
+  { name: "Corporate Offices", icon: Building2 },
+  { name: "Manufacturing", icon: Factory },
+  { name: "Education", icon: GraduationCap },
+  { name: "Healthcare", icon: HeartPulse },
+  { name: "Hospitality", icon: Hotel },
+  { name: "Government", icon: Landmark },
+  { name: "Banking & Finance", icon: Coins },
+  { name: "Real Estate", icon: Home },
+  { name: "Information Technology", icon: Cpu },
+  { name: "Retail & FMCG", icon: ShoppingBag },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="w-full">
+      {/* 1. HERO SECTION */}
+      <section className="relative overflow-hidden bg-gradient-to-tr from-brand-teal/5 via-brand-green/3 to-brand-orange/5 py-20 lg:py-32">
+        <div className="absolute inset-y-0 right-0 -z-10 w-full max-w-lg bg-radial-gradient from-brand-teal/10 to-transparent opacity-70 blur-3xl" />
+        
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl animate-slide-up text-left">
+            <span className="inline-flex items-center rounded-full bg-brand-teal/10 px-3.5 py-1.5 text-xs font-bold text-brand-teal uppercase tracking-widest">
+              Premium Corporate Gifting
+            </span>
+            <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl font-display leading-[1.1]">
+              Premium Corporate <span className="text-brand-teal">Gifting Solutions</span> in Copper
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
+              Elevate your corporate relationships with timeless, handcrafted copper masterpieces. We specialize in custom-branded, high-quality copper products designed for executives, clients, and employees.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                href="#products"
+                className="inline-flex items-center justify-center rounded-full bg-brand-teal px-8 py-3.5 text-base font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-teal/95 hover:shadow-md cursor-pointer"
+              >
+                Explore Products
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-8 py-3.5 text-base font-bold text-gray-700 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 cursor-pointer"
+              >
+                Request a Quote
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* 2. OUR PRODUCTS SECTION */}
+      <section id="products" className="scroll-mt-20 py-20 lg:py-28 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display">
+              Exquisite Copper Collections
+            </h2>
+            <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-brand-orange" />
+            <p className="mt-4 text-base leading-relaxed text-gray-500">
+              Browse our selection of artisan-crafted corporate gifts. Each piece is designed to reflect prestige and deliver therapeutic health benefits.
+            </p>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((product, index) => {
+              const Icon = product.icon;
+              return (
+                <div
+                  key={index}
+                  className="flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:border-brand-teal/20"
+                >
+                  <div>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-6 text-xl font-bold text-gray-900 font-display">
+                      {product.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                      {product.description}
+                    </p>
+                  </div>
+                  <div className="mt-6 pt-6 border-t border-gray-50">
+                    <Link
+                      href="#contact"
+                      className="inline-flex items-center text-xs font-bold text-brand-teal hover:text-brand-teal/80 transition-colors"
+                    >
+                      Enquire for pricing
+                      <ArrowRight className="ml-1.5 h-3 w-3" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* 3. WHY CHOOSE US SECTION */}
+      <section className="py-20 lg:py-28 bg-brand-teal/[0.02] border-y border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display">
+              Why Choose Sonavi Enterprises
+            </h2>
+            <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-brand-orange" />
+            <p className="mt-4 text-base leading-relaxed text-gray-500">
+              We understand corporate gifting represents your company values. Here is how we ensure seamless procurement.
+            </p>
+          </div>
+          
+          <WhyChooseUs />
+        </div>
+      </section>
+
+      {/* 4. INDUSTRIES WE SERVE */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display">
+              Industries We Serve
+            </h2>
+            <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-brand-orange" />
+            <p className="mt-4 text-base leading-relaxed text-gray-500">
+              Trusted by leading establishments to deliver high-quality custom copper gifts across diverse industry verticals.
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-4xl grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {industries.map((ind, index) => {
+              const Icon = ind.icon;
+              return (
+                <div
+                  key={index}
+                  className="flex flex-col items-center justify-center rounded-xl border border-gray-100 bg-gray-50/50 p-6 text-center shadow-2xs transition-all duration-300 hover:bg-white hover:shadow-xs hover:border-brand-teal/20"
+                >
+                  <Icon className="h-6 w-6 text-brand-teal" />
+                  <span className="mt-3 text-xs font-bold text-gray-800 leading-snug">
+                    {ind.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. BULK CORPORATE GIFTING */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-teal to-brand-green px-6 py-16 shadow-xl sm:px-12 lg:px-20 text-white">
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
+          <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-black/10 blur-2xl" />
+          
+          <div className="relative max-w-3xl">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-display">
+              Bulk Gifting & Custom Orders
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-white/90">
+              Planning employee rewards, customer appreciation, or festive gifts like Diwali Hampers? We design custom packaging, handle volume laser engraving, and structure manufacturing lead times to match your corporate deadlines.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-full bg-brand-orange px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-orange/95 hover:shadow-md cursor-pointer"
+              >
+                Discuss Bulk Gifting
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-sm font-bold text-white hover:bg-white/20 transition-all cursor-pointer"
+              >
+                About Our Capacity
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CLOSING CTA / CONTACT STRIP */}
+      <section id="contact" className="scroll-mt-20 py-20 lg:py-28 bg-brand-green/[0.02] border-t border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16 items-start">
+            
+            {/* Contact Details & Copy */}
+            <div className="lg:col-span-2 space-y-8">
+              <div className="space-y-4">
+                <span className="inline-flex items-center rounded-full bg-brand-orange/10 px-3.5 py-1.5 text-xs font-bold text-brand-orange uppercase tracking-widest">
+                  Let's Partner
+                </span>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display leading-[1.2]">
+                  Let's Build Stronger Business Relationships
+                </h2>
+                <p className="text-sm leading-relaxed text-gray-600">
+                  Allow us to partner with you in crafting masterpieces that carry your brand message. Connect with our corporate sales desk for custom quotes, design mockups, and samples.
+                </p>
+              </div>
+
+              <div className="space-y-6 pt-4 border-t border-gray-200/80">
+                <div className="flex items-start">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-teal/10 text-brand-teal flex-shrink-0">
+                    <MapPin className="h-5 w-5" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wide">Head Office</h4>
+                    <p className="mt-1 text-sm text-gray-600 font-medium">Delhi, India</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-teal/10 text-brand-teal flex-shrink-0">
+                    <Phone className="h-5 w-5" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wide">Service Area</h4>
+                    <p className="mt-1 text-sm text-gray-600 font-medium">Pan India Delivery & Custom Logistics</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Form */}
+            <div className="lg:col-span-3">
+              <EnquiryForm />
+            </div>
+
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
