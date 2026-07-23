@@ -46,7 +46,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-auto py-4 items-center justify-between">
+        <div className="flex h-[100px] items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
@@ -56,7 +56,7 @@ export default function Navbar() {
                 width={200}
                 height={200}
                 priority
-                className="w-[200px] h-[200px] object-contain"
+                className="w-[200px] h-[100px] object-contain"
               />
             </Link>
           </div>
