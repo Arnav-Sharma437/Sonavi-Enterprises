@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +47,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 sm:h-24 items-center justify-between">
-          {/* Logo */}
+          {/* Left: Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
@@ -61,7 +61,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Nav Links */}
+          {/* Center: Desktop Nav Links */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             {navLinks.map((link) => {
               const active = isLinkActive(link.href);
@@ -81,8 +81,17 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            
-            {/* CTA Button */}
+          </div>
+
+          {/* Right: Contact & CTA Button */}
+          <div className="hidden md:flex md:items-center md:space-x-6">
+            <a 
+              href="tel:+919654856548" 
+              className="flex items-center text-sm font-bold text-gray-700 hover:text-brand-teal transition-colors"
+            >
+              <Phone className="h-4 w-4 mr-2 text-brand-teal" />
+              <span>+91-9654856548</span>
+            </a>
             <Link
               href="/#contact"
               onClick={() => handleLinkClick("/#contact")}
@@ -135,7 +144,14 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <div className="mt-6 px-3">
+          <div className="mt-6 px-3 space-y-4">
+            <a 
+              href="tel:+919654856548" 
+              className="flex w-full items-center justify-center rounded-lg border border-gray-200 py-3 text-base font-bold text-gray-700 hover:text-brand-teal transition-colors"
+            >
+              <Phone className="h-4 w-4 mr-2 text-brand-teal" />
+              <span>+91-9654856548</span>
+            </a>
             <Link
               href="/#contact"
               onClick={() => handleLinkClick("/#contact")}
