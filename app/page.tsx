@@ -48,13 +48,13 @@ const products = [
     title: "Copper Cutlery Sets",
     description: "Mirror-finished and textured copper cutlery. A sophisticated table addition that speaks volumes of fine craftsmanship.",
     icon: UtensilsCrossed,
-    image: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/products/IMG_9538.PNG",
   },
   {
     title: "Customized Corporate Gift Sets",
     description: "Tailor-made copper hampers combining bottles, mugs, and customized accessories, beautifully packaged for executives.",
     icon: Gift,
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/products/IMG_9540.PNG",
   },
 ];
 
