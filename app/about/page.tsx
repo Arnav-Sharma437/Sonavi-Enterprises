@@ -13,19 +13,8 @@ export default function AboutPage() {
   return (
     <div className="w-full">
       {/* 1. Page Header/Banner */}
-      <section className="relative overflow-hidden py-24 lg:py-32 text-center text-white">
-        {/* Background Image */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80"
-            alt="Handcrafted Artisan Copper Craftsmanship"
-            fill
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/90 via-brand-teal/80 to-brand-orange/60 mix-blend-multiply gradient-bg-animate" />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
+      <section className="relative overflow-hidden bg-gradient-to-r from-brand-blue via-brand-teal to-brand-orange/80 gradient-bg-animate py-24 lg:py-32 text-center text-white">
+        <div className="absolute inset-0 -z-10 bg-black/10" />
         
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 animate-fade-in">
           <span className="inline-flex items-center rounded-full bg-white/20 px-3.5 py-1.5 text-xs font-bold text-white uppercase tracking-widest backdrop-blur-xs">
