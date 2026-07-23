@@ -17,7 +17,7 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=1200&q=80"
+            src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80"
             alt="Handcrafted Artisan Copper Craftsmanship"
             fill
             priority
