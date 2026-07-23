@@ -17,7 +17,7 @@ export default function Footer() {
                 alt="Sonavi Enterprises Logo"
                 width={200}
                 height={200}
-                className="h-16 w-auto object-contain"
+                className="w-[200px] h-[200px] object-contain"
               />
             </Link>
             <p className="text-sm leading-relaxed max-w-sm">
