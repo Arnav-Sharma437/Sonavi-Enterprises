@@ -46,17 +46,17 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[100px] items-center justify-between">
+        <div className="flex h-20 sm:h-24 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Sonavi Enterprises Logo"
-                width={200}
-                height={200}
+                width={280}
+                height={70}
                 priority
-                className="w-[200px] h-[100px] object-contain"
+                className="w-[220px] h-[55px] sm:w-[280px] sm:h-[70px] object-contain transition-transform duration-300 hover:scale-[1.02]"
               />
             </Link>
           </div>
