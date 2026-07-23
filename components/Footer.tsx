@@ -15,9 +15,9 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="Sonavi Enterprises Logo"
-                width={200}
-                height={200}
-                className="w-[200px] h-[50px] object-contain"
+                width={300}
+                height={300}
+                className="w-[300px] h-[75px] object-contain"
               />
             </Link>
             <p className="text-sm leading-relaxed max-w-sm">
