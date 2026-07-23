@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2 space-y-6">
             <Link href="/" className="inline-block">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Sonavi Enterprises Logo"
                 width={200}
                 height={50}

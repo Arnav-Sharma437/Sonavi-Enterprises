@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Sonavi Enterprises Logo"
                 width={180}
                 height={45}

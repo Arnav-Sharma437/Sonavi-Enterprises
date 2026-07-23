@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { 
   GlassWater, 
   Coffee, 
@@ -29,16 +30,19 @@ const products = [
     title: "Copper Bottles",
     description: "Premium leak-proof bottles crafted from pure copper. Combining classic elegance with modern wellness, perfect for executive desks.",
     icon: GlassWater,
+    image: "/images/products/copper-bottle-set.jpg",
   },
   {
     title: "Copper Mugs",
     description: "Artisanal hammered and smooth finished copper mugs. Adds a touch of luxury to hot and cold corporate beverages.",
     icon: Coffee,
+    image: "/images/products/copper-mug.jpg",
   },
   {
     title: "Copper Dinner Sets",
     description: "Exquisite multi-piece dining sets made of heavy-gauge pure copper. Designed for royal presentations and premium gifting.",
     icon: Utensils,
+    image: "/images/products/copper-dinner-set.jpg",
   },
   {
     title: "Copper Cutlery Sets",
@@ -74,29 +78,46 @@ export default function HomePage() {
         <div className="absolute inset-y-0 right-0 -z-10 w-full max-w-lg bg-radial-gradient from-brand-teal/10 to-transparent opacity-70 blur-3xl" />
         
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl animate-slide-up text-left">
-            <span className="inline-flex items-center rounded-full bg-brand-teal/10 px-3.5 py-1.5 text-xs font-bold text-brand-teal uppercase tracking-widest">
-              Premium Corporate Gifting
-            </span>
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl font-display leading-[1.1]">
-              Premium Corporate <span className="text-brand-teal">Gifting Solutions</span> in Copper
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
-              Elevate your corporate relationships with timeless, handcrafted copper masterpieces. We specialize in custom-branded, high-quality copper products designed for executives, clients, and employees.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="#products"
-                className="inline-flex items-center justify-center rounded-full bg-brand-teal px-8 py-3.5 text-base font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-teal/95 hover:shadow-md cursor-pointer"
-              >
-                Explore Products
-              </Link>
-              <Link
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-8 py-3.5 text-base font-bold text-gray-700 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 cursor-pointer"
-              >
-                Request a Quote
-              </Link>
+          <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
+            {/* Left Column (Text Content) */}
+            <div className="max-w-3xl lg:col-span-7 animate-slide-up text-left">
+              <span className="inline-flex items-center rounded-full bg-brand-teal/10 px-3.5 py-1.5 text-xs font-bold text-brand-teal uppercase tracking-widest">
+                Premium Corporate Gifting
+              </span>
+              <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl font-display leading-[1.1]">
+                Premium Corporate <span className="text-brand-teal">Gifting Solutions</span> in Copper
+              </h1>
+              <p className="mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
+                Elevate your corporate relationships with timeless, handcrafted copper masterpieces. We specialize in custom-branded, high-quality copper products designed for executives, clients, and employees.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link
+                  href="#products"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-teal px-8 py-3.5 text-base font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-teal/95 hover:shadow-md cursor-pointer"
+                >
+                  Explore Products
+                </Link>
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-8 py-3.5 text-base font-bold text-gray-700 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 cursor-pointer"
+                >
+                  Request a Quote
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column (Hero Lifestyle Image) */}
+            <div className="mt-12 lg:mt-0 lg:col-span-5 animate-fade-in">
+              <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gray-100 shadow-xl border border-gray-200/50">
+                <Image
+                  src="/images/products/copper-bottle-lifestyle.jpg"
+                  alt="Premium Handcrafted Copper Bottle in Nature"
+                  fill
+                  priority
+                  sizes="(max-w-7xl) 100vw, 40vw"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -121,27 +142,51 @@ export default function HomePage() {
               return (
                 <div
                   key={index}
-                  className="flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:border-brand-teal/20"
+                  className="flex flex-col justify-between overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:border-brand-teal/20"
                 >
                   <div>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
-                      <Icon className="h-6 w-6" />
+                    {product.image ? (
+                      /* Photo Container */
+                      <div className="relative aspect-[3/2] w-full overflow-hidden bg-gray-100">
+                        <Image
+                          src={product.image}
+                          alt={product.title}
+                          fill
+                          sizes="(max-w-7xl) 100vw, (max-w-1200px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      /* Icon Placeholder Container (matching size) */
+                      <div className="relative aspect-[3/2] w-full overflow-hidden bg-gradient-to-tr from-brand-teal/5 to-brand-orange/5 border-b border-gray-100/50 flex items-center justify-center">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xs text-brand-teal">
+                          <Icon className="h-8 w-8" />
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Content padding */}
+                    <div className="p-8">
+                      <h3 className="text-xl font-bold text-gray-900 font-display">
+                        {product.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                        {product.description}
+                      </p>
                     </div>
-                    <h3 className="mt-6 text-xl font-bold text-gray-900 font-display">
-                      {product.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                      {product.description}
-                    </p>
                   </div>
-                  <div className="mt-6 pt-6 border-t border-gray-50">
-                    <Link
-                      href="#contact"
-                      className="inline-flex items-center text-xs font-bold text-brand-teal hover:text-brand-teal/80 transition-colors"
-                    >
-                      Enquire for pricing
-                      <ArrowRight className="ml-1.5 h-3 w-3" />
-                    </Link>
+                  
+                  <div className="px-8 pb-8">
+                    <div className="pt-6 border-t border-gray-50">
+                      <Link
+                        href="#contact"
+                        className="inline-flex items-center text-xs font-bold text-brand-teal hover:text-brand-teal/80 transition-colors"
+                      >
+                        Enquire for pricing
+                        <ArrowRight className="ml-1.5 h-3 w-3" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );
