@@ -149,13 +149,13 @@ export default function HomePage() {
                   <div>
                     {product.image ? (
                       /* Photo Container */
-                      <div className="relative aspect-[3/2] w-full overflow-hidden bg-gray-100">
+                      <div className="relative aspect-[3/2] w-full overflow-hidden bg-white">
                         <Image
                           src={product.image}
                           alt={product.title}
                           fill
                           sizes="(max-w-7xl) 100vw, (max-w-1200px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                          className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
                           loading="lazy"
                         />
                       </div>
