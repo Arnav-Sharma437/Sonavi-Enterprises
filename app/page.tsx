@@ -73,46 +73,51 @@ const industries = [
 export default function HomePage() {
   return (
     <div className="w-full">
-      {/* 1. HERO SECTION (Full Background Image) */}
-      <section className="relative overflow-hidden py-32 lg:py-48 text-white">
-        {/* Background Image */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=1200&q=80"
-            alt="Premium Handcrafted Copper Tableware and Vessel"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/90 to-brand-teal/80 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
+      {/* 1. HERO SECTION (Text Left, Image Right) */}
+      <section className="relative overflow-hidden bg-gradient-to-tr from-brand-teal/5 via-brand-green/3 to-brand-orange/5 py-20 lg:py-32">
+        <div className="absolute inset-y-0 right-0 -z-10 w-full max-w-lg bg-radial-gradient from-brand-teal/10 to-transparent opacity-70 blur-3xl" />
         
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl animate-slide-up text-left">
-            <span className="inline-flex items-center rounded-full bg-white/20 px-3.5 py-1.5 text-xs font-bold text-white uppercase tracking-widest backdrop-blur-xs">
-              Premium Corporate Gifting
-            </span>
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-display leading-[1.1]">
-              Premium Corporate <span className="text-brand-orange font-black">Gifting Solutions</span> in Copper
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-white/90 sm:text-xl">
-              Elevate your corporate relationships with timeless, handcrafted copper masterpieces. We specialize in custom-branded, high-quality copper products designed for executives, clients, and employees.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="#products"
-                className="inline-flex items-center justify-center rounded-full bg-brand-orange px-8 py-3.5 text-base font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-orange/95 hover:shadow-md cursor-pointer"
-              >
-                Explore Products
-              </Link>
-              <Link
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-base font-bold text-white hover:bg-white/20 transition-all cursor-pointer"
-              >
-                Request a Quote
-              </Link>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
+            {/* Left Column (Text Content) */}
+            <div className="max-w-3xl lg:col-span-7 animate-slide-up text-left">
+              <span className="inline-flex items-center rounded-full bg-brand-teal/10 px-3.5 py-1.5 text-xs font-bold text-brand-teal uppercase tracking-widest">
+                Premium Corporate Gifting
+              </span>
+              <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl font-display leading-[1.1]">
+                Premium Corporate <span className="text-brand-teal">Gifting Solutions</span> in Copper
+              </h1>
+              <p className="mt-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
+                Elevate your corporate relationships with timeless, handcrafted copper masterpieces. We specialize in custom-branded, high-quality copper products designed for executives, clients, and employees.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link
+                  href="#products"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-teal px-8 py-3.5 text-base font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-teal/95 hover:shadow-md cursor-pointer"
+                >
+                  Explore Products
+                </Link>
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-8 py-3.5 text-base font-bold text-gray-700 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 cursor-pointer"
+                >
+                  Request a Quote
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column (Hero Product Image) */}
+            <div className="mt-12 lg:mt-0 lg:col-span-5 animate-fade-in">
+              <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gray-100 shadow-xl border border-gray-200/50">
+                <Image
+                  src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80"
+                  alt="Premium Handcrafted Copper Tableware and Kettle"
+                  fill
+                  priority
+                  sizes="(max-w-7xl) 100vw, 40vw"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
             </div>
           </div>
         </div>
