@@ -110,8 +110,8 @@ export default function HomePage() {
             <div className="mt-12 lg:mt-0 lg:col-span-5 animate-fade-in">
               <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gray-100 shadow-xl border border-gray-200/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80"
-                  alt="Premium Handcrafted Copper Tableware and Kettle"
+                  src="/images/products/copper-bottle-lifestyle.jpg"
+                  alt="Premium Handcrafted Copper Bottle in Nature"
                   fill
                   priority
                   sizes="(max-w-7xl) 100vw, 40vw"
@@ -308,6 +308,18 @@ export default function HomePage() {
                 <div className="flex items-start">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-teal/10 text-brand-teal flex-shrink-0">
                     <Phone className="h-5 w-5" />
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wide">Contact Number</h4>
+                    <p className="mt-1 text-sm text-gray-600 font-medium">
+                      <a href="tel:+919654856548" className="hover:text-brand-teal transition-colors font-bold">+91-9654856548</a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-teal/10 text-brand-teal flex-shrink-0">
+                    <MapPin className="h-5 w-5" />
                   </div>
                   <div className="ml-4">
                     <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wide">Service Area</h4>

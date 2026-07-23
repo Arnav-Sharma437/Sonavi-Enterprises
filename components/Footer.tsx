@@ -73,7 +73,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-brand-teal flex-shrink-0" />
-                <a href="tel:+919811000000" className="hover:text-brand-teal transition-colors">Pan India Service</a>
+                <a href="tel:+919654856548" className="hover:text-brand-teal transition-colors font-semibold">+91-9654856548</a>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-brand-teal flex-shrink-0" />
