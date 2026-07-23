@@ -70,11 +70,14 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => handleLinkClick(link.href)}
-                  className={`text-sm font-semibold transition-colors duration-200 hover:text-brand-teal ${
+                  className={`relative py-1 text-sm font-semibold transition-colors duration-300 hover:text-brand-teal group ${
                     active ? "text-brand-teal font-bold" : "text-gray-600"
                   }`}
                 >
                   {link.name}
+                  <span className={`absolute bottom-0 left-0 h-0.5 w-full bg-brand-teal transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100 ${
+                    active ? "scale-x-100" : ""
+                  }`} />
                 </Link>
               );
             })}
@@ -83,7 +86,7 @@ export default function Navbar() {
             <Link
               href="/#contact"
               onClick={() => handleLinkClick("/#contact")}
-              className="inline-flex items-center justify-center rounded-full bg-brand-orange px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-brand-orange/95 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange"
+              className="inline-flex items-center justify-center rounded-full bg-brand-orange px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-orange/90 hover:scale-105 hover:shadow-md active:scale-95 cursor-pointer"
             >
               Get a Quote
             </Link>

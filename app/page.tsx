@@ -93,13 +93,13 @@ export default function HomePage() {
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href="#products"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-teal px-8 py-3.5 text-base font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-teal/95 hover:shadow-md cursor-pointer"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-teal px-8 py-3.5 text-base font-bold text-white shadow-sm transition-all duration-300 hover:bg-brand-teal/90 hover:scale-105 hover:shadow-md active:scale-95 cursor-pointer"
                 >
                   Explore Products
                 </Link>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-8 py-3.5 text-base font-bold text-gray-700 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 cursor-pointer"
+                  className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-8 py-3.5 text-base font-bold text-gray-700 shadow-sm transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   Request a Quote
                 </Link>
@@ -108,7 +108,7 @@ export default function HomePage() {
 
             {/* Right Column (Hero Product Image) */}
             <div className="mt-12 lg:mt-0 lg:col-span-5 animate-fade-in">
-              <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gray-100 shadow-xl border border-gray-200/50">
+              <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gray-100 shadow-xl border border-gray-200/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80"
                   alt="Premium Handcrafted Copper Tableware and Kettle"
@@ -142,7 +142,7 @@ export default function HomePage() {
               return (
                 <div
                   key={index}
-                  className="flex flex-col justify-between overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:border-brand-teal/20"
+                  className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:border-brand-teal/20"
                 >
                   <div>
                     {product.image ? (
@@ -153,14 +153,14 @@ export default function HomePage() {
                           alt={product.title}
                           fill
                           sizes="(max-w-7xl) 100vw, (max-w-1200px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-500 hover:scale-105"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           loading="lazy"
                         />
                       </div>
                     ) : (
                       /* Icon Placeholder Container (matching size) */
                       <div className="relative aspect-[3/2] w-full overflow-hidden bg-gradient-to-tr from-brand-teal/5 to-brand-orange/5 border-b border-gray-100/50 flex items-center justify-center">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xs text-brand-teal">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xs text-brand-teal transition-transform duration-300 group-hover:scale-110">
                           <Icon className="h-8 w-8" />
                         </div>
                       </div>
@@ -168,7 +168,7 @@ export default function HomePage() {
                     
                     {/* Content padding */}
                     <div className="p-8">
-                      <h3 className="text-xl font-bold text-gray-900 font-display">
+                      <h3 className="text-xl font-bold text-gray-900 font-display transition-colors duration-300 group-hover:text-brand-teal">
                         {product.title}
                       </h3>
                       <p className="mt-3 text-sm leading-relaxed text-gray-600">
@@ -184,7 +184,7 @@ export default function HomePage() {
                         className="inline-flex items-center text-xs font-bold text-brand-teal hover:text-brand-teal/80 transition-colors"
                       >
                         Enquire for pricing
-                        <ArrowRight className="ml-1.5 h-3 w-3" />
+                        <ArrowRight className="ml-1.5 h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
                       </Link>
                     </div>
                   </div>
@@ -231,9 +231,9 @@ export default function HomePage() {
               return (
                 <div
                   key={index}
-                  className="flex flex-col items-center justify-center rounded-xl border border-gray-100 bg-gray-50/50 p-6 text-center shadow-2xs transition-all duration-300 hover:bg-white hover:shadow-xs hover:border-brand-teal/20"
+                  className="group flex flex-col items-center justify-center rounded-xl border border-gray-100 bg-gray-50/50 p-6 text-center shadow-2xs transition-all duration-300 hover:bg-white hover:shadow-xs hover:border-brand-teal/20 hover:-translate-y-1"
                 >
-                  <Icon className="h-6 w-6 text-brand-teal" />
+                  <Icon className="h-6 w-6 text-brand-teal transition-transform duration-300 group-hover:scale-110" />
                   <span className="mt-3 text-xs font-bold text-gray-800 leading-snug">
                     {ind.name}
                   </span>
@@ -260,13 +260,13 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-brand-orange px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-orange/95 hover:shadow-md cursor-pointer"
+                className="inline-flex items-center justify-center rounded-full bg-brand-orange px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:bg-brand-orange/90 hover:scale-105 hover:shadow-md active:scale-95 cursor-pointer"
               >
                 Discuss Bulk Gifting
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-sm font-bold text-white hover:bg-white/20 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-sm font-bold text-white hover:bg-white/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
               >
                 About Our Capacity
               </Link>
