@@ -53,10 +53,10 @@ export default function Navbar() {
               <Image
                 src="/logo.png"
                 alt="Sonavi Enterprises Logo"
-                width={200}
-                height={50}
+                width={280}
+                height={60}
                 priority
-                className="w-[180px] h-[45px] object-contain transition-transform duration-300 hover:scale-[1.02]"
+                className="w-[280px] h-[60px] object-contain transition-transform duration-300 hover:scale-[1.02]"
               />
             </Link>
           </div>
