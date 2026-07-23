@@ -57,6 +57,18 @@ body {
   background: #1B9AA0;
 }
 
+/* Shifting gradient animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-bg-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 12s ease infinite;
+}
+
 
 
 a.flex.items-center img {

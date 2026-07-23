@@ -23,7 +23,7 @@ export default function AboutPage() {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/90 to-brand-teal/80 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/90 via-brand-teal/80 to-brand-orange/60 mix-blend-multiply gradient-bg-animate" />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         

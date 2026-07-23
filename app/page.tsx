@@ -76,7 +76,7 @@ export default function HomePage() {
   return (
     <div className="w-full">
       {/* 1. HERO SECTION (Text Left, Image Right) */}
-      <section className="relative overflow-hidden bg-gradient-to-tr from-brand-teal/5 via-brand-green/3 to-brand-orange/5 py-20 lg:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-tr from-brand-teal/10 via-brand-green/5 to-brand-orange/10 gradient-bg-animate py-20 lg:py-32">
         <div className="absolute inset-y-0 right-0 -z-10 w-full max-w-lg bg-radial-gradient from-brand-teal/10 to-transparent opacity-70 blur-3xl" />
         
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
