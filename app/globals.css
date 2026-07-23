@@ -63,3 +63,7 @@ a.flex.items-center img {
     width: 200px;
     height: 200Px;
 }
+a.inline-block img {
+    width: 150px;
+    height: 100px;
+}
