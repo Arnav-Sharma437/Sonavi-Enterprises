@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Award, Shield, Users, Mail, Phone, Calendar } from "lucide-react";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import type { Metadata } from "next";
@@ -12,16 +13,29 @@ export default function AboutPage() {
   return (
     <div className="w-full">
       {/* 1. Page Header/Banner */}
-      <section className="relative bg-gradient-to-tr from-brand-teal/10 via-brand-green/3 to-brand-orange/5 py-16 lg:py-24 text-center">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <span className="inline-flex items-center rounded-full bg-brand-teal/10 px-3.5 py-1.5 text-xs font-bold text-brand-teal uppercase tracking-widest">
+      <section className="relative overflow-hidden py-24 lg:py-32 text-center text-white">
+        {/* Background Image */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=1200&q=80"
+            alt="Handcrafted Artisan Copper Craftsmanship"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/90 to-brand-teal/80 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 animate-fade-in">
+          <span className="inline-flex items-center rounded-full bg-white/20 px-3.5 py-1.5 text-xs font-bold text-white uppercase tracking-widest backdrop-blur-xs">
             Our Heritage
           </span>
-          <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl font-display">
+          <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl font-display">
             About Sonavi Enterprises
           </h1>
           <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-brand-orange" />
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-600">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/90">
             Delhi's leading corporate gifting brand specializing in custom copper creations for business relations, employees, and executives.
           </p>
         </div>

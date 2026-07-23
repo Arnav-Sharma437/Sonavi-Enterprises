@@ -110,8 +110,8 @@ export default function HomePage() {
             <div className="mt-12 lg:mt-0 lg:col-span-5 animate-fade-in">
               <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gray-100 shadow-xl border border-gray-200/50">
                 <Image
-                  src="/images/products/copper-bottle-lifestyle.jpg"
-                  alt="Premium Handcrafted Copper Bottle in Nature"
+                  src="https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=1200&q=80"
+                  alt="Premium Handcrafted Copper Tableware and Vessel"
                   fill
                   priority
                   sizes="(max-w-7xl) 100vw, 40vw"
