@@ -59,12 +59,15 @@ export default function WhyChooseUs({ short = false }: { short?: boolean }) {
         return (
           <div
             key={index}
-            className="group relative rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-brand-teal/20"
+            className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-lg hover:border-brand-teal/20"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-teal/5 text-brand-teal transition-colors group-hover:bg-brand-teal group-hover:text-white">
-              <Icon className="h-6 w-6" />
+            {/* Background Hover Glow */}
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-teal/[0.04] via-brand-orange/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-teal/5 text-brand-teal transition-all duration-500 group-hover:scale-110 group-hover:bg-brand-teal group-hover:text-white">
+              <Icon className="h-6 w-6 transition-transform duration-500 group-hover:rotate-6" />
             </div>
-            <h3 className="mt-4 text-lg font-bold text-gray-900 group-hover:text-brand-teal transition-colors">
+            <h3 className="mt-4 text-lg font-bold text-gray-900 group-hover:text-brand-teal transition-colors duration-300">
               {item.title}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-gray-600">

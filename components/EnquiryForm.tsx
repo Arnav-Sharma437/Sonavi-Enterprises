@@ -95,7 +95,7 @@ export default function EnquiryForm() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-brand-teal focus:ring-1 focus:ring-brand-teal focus:outline-none transition-all"
+                className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm hover:border-gray-300 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 focus:outline-none transition-all duration-300"
                 placeholder="e.g. Prabhjot Singh"
               />
             </div>
@@ -111,7 +111,7 @@ export default function EnquiryForm() {
                 required
                 value={formData.company}
                 onChange={handleChange}
-                className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-brand-teal focus:ring-1 focus:ring-brand-teal focus:outline-none transition-all"
+                className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm hover:border-gray-300 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 focus:outline-none transition-all duration-300"
                 placeholder="e.g. Sonavi Enterprises"
               />
             </div>
@@ -129,7 +129,7 @@ export default function EnquiryForm() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-brand-teal focus:ring-1 focus:ring-brand-teal focus:outline-none transition-all"
+                className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm hover:border-gray-300 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 focus:outline-none transition-all duration-300"
                 placeholder="e.g. name@company.com"
               />
             </div>
@@ -145,7 +145,7 @@ export default function EnquiryForm() {
                 required
                 value={formData.phone}
                 onChange={handleChange}
-                className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-brand-teal focus:ring-1 focus:ring-brand-teal focus:outline-none transition-all"
+                className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm hover:border-gray-300 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 focus:outline-none transition-all duration-300"
                 placeholder="e.g. +91 98110 00000"
               />
             </div>
@@ -162,7 +162,7 @@ export default function EnquiryForm() {
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-brand-teal focus:ring-1 focus:ring-brand-teal focus:outline-none resize-none transition-all"
+              className="mt-2 block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm hover:border-gray-300 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 focus:outline-none resize-none transition-all duration-300"
               placeholder="Describe your requirement (e.g., 'Need 200 customized copper dinner sets engraved with our company logo by Diwali')"
             />
           </div>
@@ -170,7 +170,7 @@ export default function EnquiryForm() {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="flex w-full items-center justify-center rounded-lg bg-brand-orange py-3.5 px-6 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-brand-orange/95 hover:shadow-md disabled:bg-gray-300 cursor-pointer"
+            className="flex w-full items-center justify-center rounded-lg bg-brand-orange py-3.5 px-6 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:bg-brand-orange/90 hover:scale-[1.01] hover:shadow-md active:scale-95 disabled:bg-gray-300 cursor-pointer"
           >
             {status === "submitting" ? (
               <span className="flex items-center space-x-2">
