@@ -30,19 +30,19 @@ const products = [
     title: "Copper Bottles",
     description: "Premium leak-proof bottles crafted from pure copper. Combining classic elegance with modern wellness, perfect for executive desks.",
     icon: GlassWater,
-    image: "/images/products/copper-bottle-set.jpg",
+    image: "/images/products/copper-bottle-set.PNG",
   },
   {
     title: "Copper Mugs",
     description: "Artisanal hammered and smooth finished copper mugs. Adds a touch of luxury to hot and cold corporate beverages.",
     icon: Coffee,
-    image: "/images/products/copper-mug.jpg",
+    image: "/images/products/copper-mug.PNG",
   },
   {
     title: "Copper Dinner Sets",
     description: "Exquisite multi-piece dining sets made of heavy-gauge pure copper. Designed for royal presentations and premium gifting.",
     icon: Utensils,
-    image: "/images/products/copper-dinner-set.jpg",
+    image: "/images/products/copper-dinner-set.PNG",
   },
   {
     title: "Copper Cutlery Sets",
@@ -110,7 +110,7 @@ export default function HomePage() {
             <div className="mt-12 lg:mt-0 lg:col-span-5 animate-fade-in">
               <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] w-full overflow-hidden rounded-3xl bg-gray-100 shadow-xl border border-gray-200/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
                 <Image
-                  src="/images/products/copper-bottle-lifestyle.jpg"
+                  src="/images/products/copper-bottle-lifestyle.PNG"
                   alt="Premium Handcrafted Copper Bottle in Nature"
                   fill
                   priority
