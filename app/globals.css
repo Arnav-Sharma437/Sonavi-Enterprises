@@ -56,3 +56,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #1B9AA0;
 }
+
+
+
+a.flex.items-center img {
+    width: 200px;
+    height: 200Px;
+}
