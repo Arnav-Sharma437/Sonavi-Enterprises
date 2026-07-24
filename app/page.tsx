@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -79,17 +79,45 @@ const industries = [
 
 export default function HomePage() {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const scroll = (direction: "left" | "right") => {
     if (carouselRef.current) {
-      const { scrollLeft, clientWidth } = carouselRef.current;
-      const scrollAmount = clientWidth * 0.8;
-      carouselRef.current.scrollTo({
-        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-        behavior: "smooth",
-      });
+      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+      
+      // Determine if we are at the end or start
+      const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 15;
+      const isAtStart = scrollLeft <= 15;
+
+      if (direction === "right" && isAtEnd) {
+        carouselRef.current.scrollTo({
+          left: 0,
+          behavior: "smooth",
+        });
+      } else if (direction === "left" && isAtStart) {
+        carouselRef.current.scrollTo({
+          left: scrollWidth - clientWidth,
+          behavior: "smooth",
+        });
+      } else {
+        const scrollAmount = clientWidth * 0.8;
+        carouselRef.current.scrollTo({
+          left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+          behavior: "smooth",
+        });
+      }
     }
   };
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      scroll("right");
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <div className="w-full">
@@ -178,6 +206,10 @@ export default function HomePage() {
             {/* Carousel Container */}
             <div
               ref={carouselRef}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
               className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4"
             >
               {products.map((product, index) => {
