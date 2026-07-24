@@ -63,6 +63,9 @@ const products = [
   },
 ];
 
+// Triple the products array to support seamless infinite loop scrolling
+const extendedProducts = [...products, ...products, ...products];
+
 // 10 Industries
 const industries = [
   { name: "Corporate Offices", icon: Building2 },
@@ -79,36 +82,74 @@ const industries = [
 
 export default function HomePage() {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+
+  // Position the scroll container to the middle set on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (carouselRef.current) {
+        const card = carouselRef.current.firstElementChild as HTMLElement;
+        if (card) {
+          const cardWidth = card.getBoundingClientRect().width + 32; // card width + 32px gap
+          carouselRef.current.scrollLeft = cardWidth * 5;
+        }
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Listen to scrolling to perform seamless boundary jumps when scroll stops
+  const handleScroll = () => {
+    if (!carouselRef.current) return;
+    
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    
+    scrollTimeoutRef.current = setTimeout(() => {
+      if (!carouselRef.current) return;
+      const { scrollLeft } = carouselRef.current;
+      const card = carouselRef.current.firstElementChild as HTMLElement;
+      if (!card) return;
+      
+      const cardWidth = card.getBoundingClientRect().width + 32;
+      const singleSetWidth = cardWidth * 5;
+      
+      // If we scroll into the first set, jump to corresponding position in second set
+      if (scrollLeft < singleSetWidth - 10) {
+        carouselRef.current.scrollTo({
+          left: scrollLeft + singleSetWidth,
+          behavior: "auto"
+        });
+      } 
+      // If we scroll into the third set, jump to corresponding position in second set
+      else if (scrollLeft >= (singleSetWidth * 2) - 10) {
+        carouselRef.current.scrollTo({
+          left: scrollLeft - singleSetWidth,
+          behavior: "auto"
+        });
+      }
+    }, 150);
+  };
 
   const scroll = (direction: "left" | "right") => {
     if (carouselRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+      const { scrollLeft } = carouselRef.current;
+      const card = carouselRef.current.firstElementChild as HTMLElement;
+      if (!card) return;
       
-      // Determine if we are at the end or start
-      const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 15;
-      const isAtStart = scrollLeft <= 15;
-
-      if (direction === "right" && isAtEnd) {
-        carouselRef.current.scrollTo({
-          left: 0,
-          behavior: "smooth",
-        });
-      } else if (direction === "left" && isAtStart) {
-        carouselRef.current.scrollTo({
-          left: scrollWidth - clientWidth,
-          behavior: "smooth",
-        });
-      } else {
-        const scrollAmount = clientWidth * 0.8;
-        carouselRef.current.scrollTo({
-          left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-          behavior: "smooth",
-        });
-      }
+      const cardWidth = card.getBoundingClientRect().width + 32;
+      
+      // Scroll by 1 card at a time for optimal snap transition
+      carouselRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - cardWidth : scrollLeft + cardWidth,
+        behavior: "smooth",
+      });
     }
   };
 
+  // Autoplay functionality
   useEffect(() => {
     if (isPaused) return;
 
@@ -206,13 +247,14 @@ export default function HomePage() {
             {/* Carousel Container */}
             <div
               ref={carouselRef}
+              onScroll={handleScroll}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onTouchStart={() => setIsPaused(true)}
               onTouchEnd={() => setIsPaused(false)}
               className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4"
             >
-              {products.map((product, index) => {
+              {extendedProducts.map((product, index) => {
                 const Icon = product.icon;
                 return (
                   <div
