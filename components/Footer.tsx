@@ -69,7 +69,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 text-brand-teal flex-shrink-0 mt-0.5" />
-                <span>Head Office: Delhi, India</span>
+                <span>Head Office: 11/108, Third Floor, Subhash Nagar, Near Suraya Hotel, Rajouri Garden, Delhi - 110027</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-brand-teal flex-shrink-0" />

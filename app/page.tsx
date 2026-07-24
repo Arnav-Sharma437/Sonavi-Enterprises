@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -19,7 +22,9 @@ import {
   ArrowRight, 
   Mail, 
   Phone, 
-  MapPin 
+  MapPin,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import EnquiryForm from "@/components/EnquiryForm";
@@ -48,7 +53,7 @@ const products = [
     title: "Copper Cutlery Sets",
     description: "Mirror-finished and textured copper cutlery. A sophisticated table addition that speaks volumes of fine craftsmanship.",
     icon: UtensilsCrossed,
-    image: "/images/products/IMG_9538.PNG",
+    image: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1200&q=80",
   },
   {
     title: "Customized Corporate Gift Sets",
@@ -73,6 +78,19 @@ const industries = [
 ];
 
 export default function HomePage() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (carouselRef.current) {
+      const { scrollLeft, clientWidth } = carouselRef.current;
+      const scrollAmount = clientWidth * 0.8;
+      carouselRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="w-full">
       {/* 1. HERO SECTION (Text Left, Image Right) */}
@@ -138,61 +156,85 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product, index) => {
-              const Icon = product.icon;
-              return (
-                <div
-                  key={index}
-                  className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:border-brand-teal/20"
-                >
-                  <div>
-                    {product.image ? (
-                      /* Photo Container */
-                      <div className="relative aspect-[3/2] w-full overflow-hidden bg-white">
-                        <Image
-                          src={product.image}
-                          alt={product.title}
-                          fill
-                          sizes="(max-w-7xl) 100vw, (max-w-1200px) 50vw, 33vw"
-                          className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : (
-                      /* Icon Placeholder Container (matching size) */
-                      <div className="relative aspect-[3/2] w-full overflow-hidden bg-gradient-to-tr from-brand-teal/5 to-brand-orange/5 border-b border-gray-100/50 flex items-center justify-center">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xs text-brand-teal transition-transform duration-300 group-hover:scale-110">
-                          <Icon className="h-8 w-8" />
+          <div className="relative mt-16 group/carousel px-4">
+            {/* Left Button */}
+            <button
+              onClick={() => scroll("left")}
+              className="absolute -left-2 lg:-left-6 top-[40%] -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white border border-gray-200 shadow-md text-brand-teal hover:bg-brand-teal hover:text-white transition-all cursor-pointer focus:outline-none"
+              aria-label="Previous Products"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            {/* Right Button */}
+            <button
+              onClick={() => scroll("right")}
+              className="absolute -right-2 lg:-right-6 top-[40%] -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white border border-gray-200 shadow-md text-brand-teal hover:bg-brand-teal hover:text-white transition-all cursor-pointer focus:outline-none"
+              aria-label="Next Products"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            {/* Carousel Container */}
+            <div
+              ref={carouselRef}
+              className="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4"
+            >
+              {products.map((product, index) => {
+                const Icon = product.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xs transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:border-brand-teal/20 w-[80%] sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-21.3px)] shrink-0 snap-start"
+                  >
+                    <div>
+                      {product.image ? (
+                        /* Photo Container */
+                        <div className="relative aspect-[3/2] w-full overflow-hidden bg-white">
+                          <Image
+                            src={product.image}
+                            alt={product.title}
+                            fill
+                            sizes="(max-w-7xl) 100vw, (max-w-1200px) 50vw, 33vw"
+                            className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                            loading="lazy"
+                          />
                         </div>
+                      ) : (
+                        /* Icon Placeholder Container (matching size) */
+                        <div className="relative aspect-[3/2] w-full overflow-hidden bg-gradient-to-tr from-brand-teal/5 to-brand-orange/5 border-b border-gray-100/50 flex items-center justify-center">
+                          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xs text-brand-teal transition-transform duration-300 group-hover:scale-110">
+                            <Icon className="h-8 w-8" />
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Content padding */}
+                      <div className="p-8">
+                        <h3 className="text-xl font-bold text-gray-900 font-display transition-colors duration-300 group-hover:text-brand-teal">
+                          {product.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                          {product.description}
+                        </p>
                       </div>
-                    )}
+                    </div>
                     
-                    {/* Content padding */}
-                    <div className="p-8">
-                      <h3 className="text-xl font-bold text-gray-900 font-display transition-colors duration-300 group-hover:text-brand-teal">
-                        {product.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                        {product.description}
-                      </p>
+                    <div className="px-8 pb-8">
+                      <div className="pt-6 border-t border-gray-50">
+                        <Link
+                          href="#contact"
+                          className="inline-flex items-center text-xs font-bold text-brand-teal hover:text-brand-teal/80 transition-colors"
+                        >
+                          Enquire for pricing
+                          <ArrowRight className="ml-1.5 h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="px-8 pb-8">
-                    <div className="pt-6 border-t border-gray-50">
-                      <Link
-                        href="#contact"
-                        className="inline-flex items-center text-xs font-bold text-brand-teal hover:text-brand-teal/80 transition-colors"
-                      >
-                        Enquire for pricing
-                        <ArrowRight className="ml-1.5 h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -209,7 +251,6 @@ export default function HomePage() {
               We understand corporate gifting represents your company values. Here is how we ensure seamless procurement.
             </p>
           </div>
-          
           <WhyChooseUs />
         </div>
       </section>
@@ -218,27 +259,32 @@ export default function HomePage() {
       <section className="py-20 lg:py-28 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display">
+            <span className="inline-flex items-center rounded-full bg-brand-teal/10 px-3.5 py-1.5 text-xs font-bold text-brand-teal uppercase tracking-widest">
+              Pan-India Supply
+            </span>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display">
               Industries We Serve
             </h2>
             <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-brand-orange" />
             <p className="mt-4 text-base leading-relaxed text-gray-500">
-              Trusted by leading establishments to deliver high-quality custom copper gifts across diverse industry verticals.
+              Sonavi Enterprises delivers pure copper corporate gifts to diverse industry verticals, backed by custom engraving and reliable delivery.
             </p>
           </div>
 
-          <div className="mx-auto max-w-4xl grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {industries.map((ind, index) => {
-              const Icon = ind.icon;
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+            {industries.map((item, index) => {
+              const Icon = item.icon;
               return (
                 <div
                   key={index}
-                  className="group flex flex-col items-center justify-center rounded-xl border border-gray-100 bg-gray-50/50 p-6 text-center shadow-2xs transition-all duration-300 hover:bg-white hover:shadow-xs hover:border-brand-teal/20 hover:-translate-y-1"
+                  className="group flex flex-col items-center justify-center p-8 rounded-2xl border border-gray-100 bg-white text-center shadow-xs transition-all duration-300 hover:border-brand-teal/20 hover:shadow-md"
                 >
-                  <Icon className="h-6 w-6 text-brand-teal transition-transform duration-300 group-hover:scale-110" />
-                  <span className="mt-3 text-xs font-bold text-gray-800 leading-snug">
-                    {ind.name}
-                  </span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-teal/5 text-brand-teal transition-transform duration-300 group-hover:scale-110">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 text-sm font-bold text-gray-800 tracking-wide uppercase">
+                    {item.name}
+                  </h3>
                 </div>
               );
             })}
@@ -246,47 +292,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. BULK CORPORATE GIFTING */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-teal to-brand-green px-6 py-16 shadow-xl sm:px-12 lg:px-20 text-white">
-          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
-          <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-black/10 blur-2xl" />
-          
-          <div className="relative max-w-3xl">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-display">
-              Bulk Gifting & Custom Orders
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/90">
-              Planning employee rewards, customer appreciation, or festive gifts like Diwali Hampers? We design custom packaging, handle volume laser engraving, and structure manufacturing lead times to match your corporate deadlines.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-brand-orange px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:bg-brand-orange/90 hover:scale-105 hover:shadow-md active:scale-95 cursor-pointer"
-              >
-                Discuss Bulk Gifting
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-sm font-bold text-white hover:bg-white/20 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-              >
-                About Our Capacity
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. CLOSING CTA / CONTACT STRIP */}
-      <section id="contact" className="scroll-mt-20 py-20 lg:py-28 bg-brand-green/[0.02] border-t border-gray-100">
+      {/* 5. CONTACT / ENQUIRY SECTION */}
+      <section id="contact" className="scroll-mt-20 py-20 lg:py-28 bg-gray-50/50 border-t border-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16 items-start">
             
-            {/* Contact Details & Copy */}
+            {/* Info */}
             <div className="lg:col-span-2 space-y-8">
-              <div className="space-y-4">
-                <span className="inline-flex items-center rounded-full bg-brand-orange/10 px-3.5 py-1.5 text-xs font-bold text-brand-orange uppercase tracking-widest">
-                  Let's Partner
+              <div>
+                <span className="inline-flex items-center rounded-full bg-brand-teal/10 px-3.5 py-1.5 text-xs font-bold text-brand-teal uppercase tracking-widest">
+                  Contact Us
                 </span>
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display leading-[1.2]">
                   Let's Build Stronger Business Relationships
@@ -303,7 +318,7 @@ export default function HomePage() {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wide">Head Office</h4>
-                    <p className="mt-1 text-sm text-gray-600 font-medium">Delhi, India</p>
+                    <p className="mt-1 text-sm text-gray-600 font-medium">11/108, Third Floor, Subhash Nagar, Near Suraya Hotel, Rajouri Garden, Delhi - 110027</p>
                   </div>
                 </div>
 
